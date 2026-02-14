@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data noupdate="0">
         <!-- Parent Category -->
         <record id="product_category_bharatlaundary" model="product.public.category">
             <field name="name">Bharat Laundary</field>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Product List View to add eCommerce Category and UOM -->
+    <record id="product_template_list_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.list.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <!-- Replace Internal Reference with eCommerce Category -->
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="ecommerce_categ_id" string="eCommerce Category" optional="show"/>
+                <field name="uom_id" string="Unit" optional="show"/>
+            </xpath>
+
+            <!-- Also ensure public_categ_ids is visible if desired, but ecommerce_categ_id is for grouping -->
+            <xpath expr="//field[@name='categ_id']" position="after">
+                 <field name="public_categ_ids" widget="many2many_tags" string="eCommerce Categories" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Product Form View to ensure UOM is visible -->
+    <record id="product_template_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='uom_po_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Product Search View to add Group By eCommerce Category -->
+    <record id="product_template_search_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.search.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="eCommerce Category" name="group_ecommerce_categ_id" context="{'group_by':'ecommerce_categ_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

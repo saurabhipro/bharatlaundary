@@ -14,6 +14,7 @@ Handles backend logic for Bharat Laundary.
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        'views/product_views.xml',
         'data/data.xml',
         'data/products.xml',
     ],
