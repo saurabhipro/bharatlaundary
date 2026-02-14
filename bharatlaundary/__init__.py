@@ -37,3 +37,20 @@ def post_init_hook(env):
         other_products = env['product.template'].search([('public_categ_ids', 'not in', legal_category_ids)])
         if other_products:
             other_products.unlink()
+
+    # 2. Configure COD (Cash on Delivery)
+    cod_provider = env['payment.provider'].search([('code', '=', 'transfer')], limit=1)
+    if cod_provider:
+        cod_provider.write({
+            'name': 'Cash on Delivery (COD)',
+            'display_as': 'Cash on Delivery',
+            'state': 'enabled',
+            'is_published': True,
+            'pending_msg': '<p>Your order has been confirmed. Please keep the cash ready at the time of delivery.</p>',
+        })
+        cod_provider.website_id = False
+        
+        # Link payment methods (Needed in Odoo 17/18)
+        transfer_method = env['payment.method'].search([('code', '=', 'transfer')], limit=1)
+        if transfer_method and transfer_method not in cod_provider.payment_method_ids:
+            cod_provider.payment_method_ids = [(4, transfer_method.id)]
