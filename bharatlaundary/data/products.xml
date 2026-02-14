@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_wash_fold" model="product.template">
+            <field name="name">Wash &amp; Fold</field>
+            <field name="type">service</field>
+            <field name="list_price">59</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_laundry')])]"/>
+            <field name="website_published">True</field>
+            <field name="uom_id" ref="uom.product_uom_kgm"/>
+            <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_wash_fold')])] 
+            })]"/>
+        </record>
+
+        <record id="product_wash_iron" model="product.template">
+            <field name="name">Wash &amp; Iron</field>
+            <field name="type">service</field>
+            <field name="list_price">89</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_laundry')])]"/>
+            <field name="website_published">True</field>
+            <field name="uom_id" ref="uom.product_uom_kgm"/>
+            <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_wash_iron')])] 
+            })]"/>
+        </record>
+
+        <record id="product_premium_laundry" model="product.template">
+            <field name="name">Premium Laundry</field>
+            <field name="type">service</field>
+            <field name="list_price">149</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_premium_laundry')])]"/>
+            <field name="website_published">True</field>
+            <field name="uom_id" ref="uom.product_uom_kgm"/>
+            <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_premium_laundry')])] 
+            })]"/>
+        </record>
+
+        <record id="product_fabric_softener" model="product.template">
+            <field name="name">Fabric Softener</field>
+            <field name="type">service</field>
+            <field name="list_price">5</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_addons')])]"/>
+            <field name="website_published">True</field>
+            <field name="uom_id" ref="uom.product_uom_kgm"/>
+            <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+        </record>
+
+        <record id="product_antiseptic_wash" model="product.template">
+            <field name="name">Antiseptic Wash</field>
+            <field name="type">service</field>
+            <field name="list_price">5</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_addons')])]"/>
+            <field name="website_published">True</field>
+            <field name="uom_id" ref="uom.product_uom_kgm"/>
+            <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+        </record>
+
+        <record id="product_shirt" model="product.template">
+            <field name="name">Shirt</field>
+            <field name="type">service</field>
+            <field name="list_price">100</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_t_shirt" model="product.template">
+            <field name="name">T-Shirt</field>
+            <field name="type">service</field>
+            <field name="list_price">100</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_trouser" model="product.template">
+            <field name="name">Trouser</field>
+            <field name="type">service</field>
+            <field name="list_price">100</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_heavy_trouser" model="product.template">
+            <field name="name">Heavy Trouser</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_kurta_plain" model="product.template">
+            <field name="name">Kurta Plain</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_kurta_fancy" model="product.template">
+            <field name="name">Kurta Fancy</field>
+            <field name="type">service</field>
+            <field name="list_price">250</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_kurta_heavy" model="product.template">
+            <field name="name">Kurta Heavy</field>
+            <field name="type">service</field>
+            <field name="list_price">350</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_coat_blazer" model="product.template">
+            <field name="name">Coat / Blazer</field>
+            <field name="type">service</field>
+            <field name="list_price">250</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_coat_blazer_heavy" model="product.template">
+            <field name="name">Coat / Blazer Heavy</field>
+            <field name="type">service</field>
+            <field name="list_price">350</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_dhoti" model="product.template">
+            <field name="name">Dhoti</field>
+            <field name="type">service</field>
+            <field name="list_price">80</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_pajama" model="product.template">
+            <field name="name">Pajama</field>
+            <field name="type">service</field>
+            <field name="list_price">100</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_sherwani" model="product.template">
+            <field name="name">Sherwani</field>
+            <field name="type">service</field>
+            <field name="list_price">750</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_short" model="product.template">
+            <field name="name">Short</field>
+            <field name="type">service</field>
+            <field name="list_price">80</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_sweater" model="product.template">
+            <field name="name">Sweater</field>
+            <field name="type">service</field>
+            <field name="list_price">200</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_leather_jacket" model="product.template">
+            <field name="name">Leather Jacket</field>
+            <field name="type">service</field>
+            <field name="list_price">600</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_rexine_jacket" model="product.template">
+            <field name="name">Rexine Jacket</field>
+            <field name="type">service</field>
+            <field name="list_price">450</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_nehru_jacket" model="product.template">
+            <field name="name">Nehru Jacket</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_men_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_kurta_plain" model="product.template">
+            <field name="name">Kurta Plain</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_kurta_heavy" model="product.template">
+            <field name="name">Kurta Heavy</field>
+            <field name="type">service</field>
+            <field name="list_price">350</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_dress_small" model="product.template">
+            <field name="name">Dress Small</field>
+            <field name="type">service</field>
+            <field name="list_price">250</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_dress_long" model="product.template">
+            <field name="name">Dress Long</field>
+            <field name="type">service</field>
+            <field name="list_price">300</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_anarkali_suit_heavy" model="product.template">
+            <field name="name">Anarkali Suit Heavy</field>
+            <field name="type">service</field>
+            <field name="list_price">450</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_top" model="product.template">
+            <field name="name">Top</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_saree_plain" model="product.template">
+            <field name="name">Saree Plain</field>
+            <field name="type">service</field>
+            <field name="list_price">260</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_saree_heavy" model="product.template">
+            <field name="name">Saree Heavy</field>
+            <field name="type">service</field>
+            <field name="list_price">400</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_saree_fancy" model="product.template">
+            <field name="name">Saree Fancy</field>
+            <field name="type">service</field>
+            <field name="list_price">380</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_lehenga" model="product.template">
+            <field name="name">Lehenga</field>
+            <field name="type">service</field>
+            <field name="list_price">600</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_lehenga_bridal" model="product.template">
+            <field name="name">Lehenga Bridal</field>
+            <field name="type">service</field>
+            <field name="list_price">1200</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_dupatta" model="product.template">
+            <field name="name">Dupatta</field>
+            <field name="type">service</field>
+            <field name="list_price">120</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_dupatta_fancy" model="product.template">
+            <field name="name">Dupatta Fancy</field>
+            <field name="type">service</field>
+            <field name="list_price">200</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_blouse" model="product.template">
+            <field name="name">Blouse</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_blouse_fancy" model="product.template">
+            <field name="name">Blouse Fancy</field>
+            <field name="type">service</field>
+            <field name="list_price">200</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_skirt" model="product.template">
+            <field name="name">Skirt</field>
+            <field name="type">service</field>
+            <field name="list_price">200</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_skirt_long" model="product.template">
+            <field name="name">Skirt Long</field>
+            <field name="type">service</field>
+            <field name="list_price">250</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_salwar" model="product.template">
+            <field name="name">Salwar</field>
+            <field name="type">service</field>
+            <field name="list_price">150</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+        <record id="product_stole" model="product.template">
+            <field name="name">Stole</field>
+            <field name="type">service</field>
+            <field name="list_price">120</field>
+            <field name="public_categ_ids" eval="[(6, 0, [ref('bharatlaundary.product_category_women_dry_cleaning')])]"/>
+            <field name="website_published">True</field>
+            <field name="attribute_line_ids" eval="[(0, 0, {
+                'attribute_id': ref('bharatlaundary.product_attribute_service_type'),
+                'value_ids': [(6, 0, [ref('bharatlaundary.product_attribute_value_dry_cleaning')])] 
+            })]"/>
+        </record>
+
+    </data>
+</odoo>
