@@ -17,10 +17,10 @@ def post_init_hook(env):
     if root_category:
         # Get all legal categories (root and its children)
         legal_category_ids = env['product.public.category'].search([('id', 'child_of', root_category.id)]).ids
-        # Find and delete all other categories
+        # Archive categories that are not ours (safer than deleting)
         other_categories = env['product.public.category'].search([('id', 'not in', legal_category_ids)])
         if other_categories:
-            other_categories.unlink()
+            other_categories.write({'active': False})
 
         # Update all products in our Categories to be 'service' type
         # This fixes products that were imported as 'consu' or 'product' previously
@@ -33,10 +33,11 @@ def post_init_hook(env):
             # Force recompute of our new grouping field
             our_products._compute_ecommerce_categ_id()
 
-        # Delete products that are not assigned to our legal categories
+        # Archive products that are not assigned to our legal categories
+        # This prevents "Validation Error" if they are linked to Shipping Methods
         other_products = env['product.template'].search([('public_categ_ids', 'not in', legal_category_ids)])
         if other_products:
-            other_products.unlink()
+            other_products.write({'active': False})
 
     # 2. Configure COD (Cash on Delivery)
     cod_provider = env['payment.provider'].search([('code', '=', 'transfer')], limit=1)
