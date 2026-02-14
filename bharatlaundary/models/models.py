@@ -51,6 +51,39 @@ class SaleOrder(models.Model):
 
     rider_id = fields.Many2one('hr.employee', string="Pickup/Delivery Rider", domain=[('laundry_role', '=', 'rider')])
 
+    def _get_laundry_tags(self):
+        """ Returns a list of tag data for the report """
+        self.ensure_one()
+        tags = []
+        # Calculate total count of items across all lines (services)
+        service_lines = self.order_line.filtered(lambda l: l.product_id.type == 'service')
+        total_count = int(sum(service_lines.mapped('product_uom_qty')))
+        
+        if total_count == 0:
+            total_count = int(sum(self.order_line.mapped('product_uom_qty')))
+        
+        current_idx = 1
+        for line in self.order_line:
+            qty = int(line.product_uom_qty)
+            if qty <= 0:
+                continue
+            
+            # Service abbreviation (first 2 letters)
+            service_code = line.product_id.name[:2].upper() if line.product_id.name else "LD"
+            
+            for _ in range(qty):
+                tags.append({
+                    'index': current_idx,
+                    'total': total_count,
+                    'product_name': line.product_id.name,
+                    'service_code': service_code,
+                    'customer_name': self.partner_id.name,
+                    'order_name': self.name,
+                    'date': fields.Datetime.now().strftime('%m/%d/%y, %I:%M %p'),
+                })
+                current_idx += 1
+        return tags
+
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 

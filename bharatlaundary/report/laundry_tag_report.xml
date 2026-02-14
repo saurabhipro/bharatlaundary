@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Paper Format for Laundry Tag -->
+    <record id="paperformat_laundry_tag" model="report.paperformat">
+        <field name="name">Laundry Tag (Small)</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">80</field>
+        <field name="page_width">80</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">2</field>
+        <field name="margin_bottom">2</field>
+        <field name="margin_left">2</field>
+        <field name="margin_right">2</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- Report Action -->
+    <record id="action_report_laundry_tag" model="ir.actions.report">
+        <field name="name">Print Laundry Tags</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bharatlaundary.report_laundry_tag_template</field>
+        <field name="report_file">bharatlaundary.report_laundry_tag_template</field>
+        <field name="print_report_name">'Laundry Tags - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_laundry_tag"/>
+    </record>
+
+    <!-- Report Template -->
+    <template id="report_laundry_tag_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-foreach="doc._get_laundry_tags()" t-as="tag">
+                    <div class="page" style="width: 80mm; height: 80mm; padding: 5mm; font-family: sans-serif; text-align: center; border: 1px dashed #ccc; page-break-after: always; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+                        
+                        <!-- Top Date -->
+                        <div style="font-size: 10pt; font-weight: bold; margin-bottom: 5px;">
+                            <t t-esc="tag['date']"/>
+                        </div>
+
+                        <!-- Brand Name (Mini) -->
+                        <div style="font-size: 8pt; letter-spacing: 1px; border-bottom: 1px dashed #000; padding-bottom: 2px; margin-bottom: 5px; width: 80%;">
+                            BHARAT LAUNDRY
+                        </div>
+
+                        <!-- SO Number High Visibility -->
+                        <div style="font-size: 18pt; font-weight: 900; margin-bottom: 5px;">
+                            <t t-esc="tag['order_name']"/>
+                        </div>
+
+                        <!-- Barcode -->
+                        <div style="margin-bottom: 5px;">
+                            <img t-att-src="'/report/barcode/?type=Code128&amp;value=%s&amp;width=400&amp;height=100' % tag['order_name']" style="width: 100%; height: 25px;"/>
+                        </div>
+
+                        <!-- Service Name -->
+                        <div style="font-size: 11pt; font-weight: bold; margin-bottom: 5px;">
+                            <t t-esc="tag['product_name']"/>
+                        </div>
+
+                        <!-- Counter: X of Total -->
+                        <div style="font-size: 14pt; font-weight: bold; margin-bottom: 10px;">
+                            <t t-esc="tag['index']"/> of <t t-esc="tag['total']"/>
+                        </div>
+
+                        <!-- Service Abbreviation Box -->
+                        <div style="border: 2px solid #000; padding: 2px 8px; font-size: 14pt; font-weight: 900; display: inline-block; margin-bottom: 10px;">
+                            <t t-esc="tag['service_code']"/>
+                        </div>
+
+                        <!-- Customer Name -->
+                        <div style="font-size: 10pt; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%;">
+                            <t t-esc="tag['customer_name']"/>
+                        </div>
+
+                        <!-- Bottom URL / Branding -->
+                        <div style="position: absolute; bottom: 5px; left: 5px; font-size: 7pt;">
+                            bharatlaundry.com
+                        </div>
+                        <div style="position: absolute; bottom: 5px; right: 5px; font-size: 7pt;">
+                            <t t-esc="tag['index']"/>/<t t-esc="tag['total']"/>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
