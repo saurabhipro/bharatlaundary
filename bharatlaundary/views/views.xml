@@ -5,9 +5,15 @@
         <field name="name">bharatlaundary.service.list</field>
         <field name="model">bharatlaundary.service</field>
         <field name="arch" type="xml">
-            <list string="Bharat Laundary Services">
+            <list string="Combo Choices" editable="bottom">
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
-                <field name="description"/>
+                <field name="price"/>
+                <field name="uom"/>
+                <field name="turnaround"/>
+                <field name="packaging"/>
+                <field name="suitability"/>
+                <field name="icon_class"/>
                 <field name="active"/>
             </list>
         </field>
@@ -17,11 +23,28 @@
         <field name="name">bharatlaundary.service.form</field>
         <field name="model">bharatlaundary.service</field>
         <field name="arch" type="xml">
-            <form string="Service">
+            <form string="Combo Choice">
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Service Name (e.g. Wash &amp; Fold)"/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="name"/>
+                        <group name="pricing" string="Pricing &amp; Units">
+                            <field name="price"/>
+                            <field name="uom"/>
+                            <field name="icon_class"/>
+                        </group>
+                        <group name="details" string="Service Details">
+                            <field name="turnaround"/>
+                            <field name="packaging"/>
+                            <field name="suitability"/>
+                        </group>
+                    </group>
+                    <group>
                         <field name="description"/>
+                        <field name="sequence"/>
                         <field name="active"/>
                     </group>
                 </sheet>
@@ -31,17 +54,17 @@
 
     <!-- Define Actions -->
     <record id="action_bharatlaundary_service" model="ir.actions.act_window">
-        <field name="name">Services</field>
+        <field name="name">Combo Choices</field>
         <field name="res_model">bharatlaundary.service</field>
         <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Create your first service!
+                Create your first combo choice!
             </p>
         </field>
     </record>
 
     <!-- Define Menus -->
     <menuitem id="menu_bharatlaundary_root" name="Bharat Laundary" sequence="10"/>
-    <menuitem id="menu_bharatlaundary_service" name="Services" parent="menu_bharatlaundary_root" action="action_bharatlaundary_service" sequence="10"/>
+    <menuitem id="menu_bharatlaundary_service" name="Combo Choices" parent="menu_bharatlaundary_root" action="action_bharatlaundary_service" sequence="10"/>
 </odoo>

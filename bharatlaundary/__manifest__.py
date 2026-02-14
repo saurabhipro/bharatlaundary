@@ -10,14 +10,21 @@ Handles backend logic for Bharat Laundary.
     'author': "Bharat Laundary Team",
     'website': "http://www.bharatlaundary.com",
     'category': 'Services',
-    'depends': ['base', 'product', 'website_sale'],
+    'depends': ['base', 'product', 'website', 'website_sale'],
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/product_views.xml',
+        'views/website_templates.xml',
         'data/data.xml',
         'data/products.xml',
+        'data/combos.xml',
     ],
+    'assets': {
+        'web.assets_frontend': [
+            'bharatlaundary/static/src/css/style.css',
+        ],
+    },
     'demo': [],
     'installable': True,
     'application': True,

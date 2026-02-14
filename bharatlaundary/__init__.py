@@ -1,4 +1,5 @@
 from . import models
+from . import controllers
 
 def post_init_hook(env):
     """
@@ -8,7 +9,11 @@ def post_init_hook(env):
     # Find our root category
     root_category = env.ref('bharatlaundary.product_category_bharatlaundary', raise_if_not_found=False)
     
-    
+    # 1. Clean up website pages (Delete default Pricing page)
+    pages = env['website.page'].search([('url', '=', '/pricing')])
+    if pages:
+        pages.unlink()
+
     if root_category:
         # Get all legal categories (root and its children)
         legal_category_ids = env['product.public.category'].search([('id', 'child_of', root_category.id)]).ids

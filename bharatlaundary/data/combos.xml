@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="combo_wash_fold" model="bharatlaundary.service">
+            <field name="name">Wash &amp; Fold</field>
+            <field name="price">59.0</field>
+            <field name="uom">Kg</field>
+            <field name="turnaround">48 hrs Turnaround</field>
+            <field name="packaging">Combined Packaging</field>
+            <field name="suitability">For Casual &amp; Regular Wear</field>
+            <field name="icon_class">fa-shopping-basket</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="combo_wash_iron" model="bharatlaundary.service">
+            <field name="name">Wash &amp; Iron</field>
+            <field name="price">89.0</field>
+            <field name="uom">Kg</field>
+            <field name="turnaround">48 hrs Turnaround</field>
+            <field name="packaging">Combined Packaging</field>
+            <field name="suitability">For Casual &amp; Regular Wear</field>
+            <field name="icon_class">fa-recycle</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="combo_premium_laundry" model="bharatlaundary.service">
+            <field name="name">Premium Laundry</field>
+            <field name="price">149.0</field>
+            <field name="uom">Kg</field>
+            <field name="turnaround">72 hrs Turnaround</field>
+            <field name="packaging">Individual Packaging</field>
+            <field name="suitability">For Formals, Whites and Branded</field>
+            <field name="icon_class">fa-magic</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="combo_dry_cleaning" model="bharatlaundary.service">
+            <field name="name">Dry Cleaning</field>
+            <field name="price">79.0</field>
+            <field name="uom">Shirt</field>
+            <field name="turnaround">72 hrs Turnaround</field>
+            <field name="packaging">Individual Packaging</field>
+            <field name="suitability">For Expensive &amp; Fancy Garments</field>
+            <field name="icon_class">fa-star</field>
+            <field name="sequence">4</field>
+        </record>
+    </data>
+</odoo>
