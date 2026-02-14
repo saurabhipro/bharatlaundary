@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_laundry" model="ir.module.category">
+        <field name="name">Laundry Management</field>
+        <field name="description">User roles for Bharat Laundry</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="group_laundry_rider" model="res.groups">
+        <field name="name">Rider</field>
+        <field name="category_id" ref="module_category_laundry"/>
+    </record>
+
+    <record id="group_laundry_washer" model="res.groups">
+        <field name="name">Washer</field>
+        <field name="category_id" ref="module_category_laundry"/>
+    </record>
+
+    <record id="group_laundry_ironer" model="res.groups">
+        <field name="name">Ironer</field>
+        <field name="category_id" ref="module_category_laundry"/>
+    </record>
+
+    <record id="group_laundry_admin" model="res.groups">
+        <field name="name">Shop Admin</field>
+        <field name="category_id" ref="module_category_laundry"/>
+        <field name="implied_ids" eval="[(4, ref('group_laundry_rider')), (4, ref('group_laundry_washer')), (4, ref('group_laundry_ironer'))]"/>
+    </record>
+</odoo>

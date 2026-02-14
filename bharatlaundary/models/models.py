@@ -34,3 +34,29 @@ class ProductTemplate(models.Model):
                 record.ecommerce_categ_id = record.public_categ_ids[0].id
             else:
                 record.ecommerce_categ_id = False
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    laundry_state = fields.Selection([
+        ('draft', 'Quotation'),
+        ('pickup_assigned', 'Pickup Assigned'),
+        ('picked', 'Picked Up'),
+        ('processing', 'Processing'),
+        ('washing', 'Washing'),
+        ('ready', 'Ready'),
+        ('delivered', 'Delivered'),
+        ('invoice_pending', 'Invoice Pending'),
+        ('invoiced', 'Invoiced'),
+    ], string="Laundry Status", default='draft', tracking=True)
+
+    rider_id = fields.Many2one('hr.employee', string="Pickup/Delivery Rider", domain=[('laundry_role', '=', 'rider')])
+
+class HrEmployee(models.Model):
+    _inherit = 'hr.employee'
+
+    laundry_role = fields.Selection([
+        ('admin', 'Shop Admin'),
+        ('washer', 'Washer'),
+        ('rider', 'Rider'),
+        ('ironer', 'Ironer'),
+    ], string="Laundry Role")
