@@ -47,7 +47,7 @@ class BharatLaundaryWebsite(http.Controller):
             'contact_name': contact_name,
             'mobile': mobile,
             'description': description,
-            'type': 'lead',
+            'type': 'opportunity',
         })
         
         # Redirect to thank you page or show success message on homepage
