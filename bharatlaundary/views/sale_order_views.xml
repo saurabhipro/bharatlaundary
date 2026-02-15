@@ -21,6 +21,7 @@
             <!-- Using 'list' tag instead of 'tree' for Odoo 18 compatibility -->
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
                 <field name="piece_count" string="Pieces" sum="Total Pieces"/>
+                <field name="service_tag_ids" widget="many2many_tags" optional="show" options="{'color_field': 'color'}"/>
             </xpath>
             
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="attributes">

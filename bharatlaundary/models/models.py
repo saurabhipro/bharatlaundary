@@ -39,6 +39,12 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     piece_count = fields.Integer(string="Pieces", default=1, help="Number of physical items/tags to generate")
+    service_tag_ids = fields.Many2many(related='product_id.product_tag_ids', string="Tags")
+
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
+
+    service_tag_ids = fields.Many2many(related='product_id.product_tag_ids', string="Tags")
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -78,8 +84,11 @@ class SaleOrder(models.Model):
                 # Fallback to uom_qty if piece_count is 0 or negative (though default is 1)
                 qty = int(line.product_uom_qty) if line.product_uom_qty >= 1 else 1
             
-            # Service abbreviation (first 2 letters)
-            service_code = line.product_id.name[:2].upper() if line.product_id.name else "LD"
+            # Service abbreviation (first 2 letters) or first tag
+            if line.service_tag_ids:
+                service_code = line.service_tag_ids[0].name.upper()
+            else:
+                service_code = line.product_id.name[:2].upper() if line.product_id.name else "LD"
             
             for _ in range(qty):
                 tags.append({

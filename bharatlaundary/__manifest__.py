@@ -17,6 +17,7 @@ Handles backend logic for Bharat Laundary.
         'views/views.xml',
         'views/product_views.xml',
         'views/sale_order_views.xml',
+        'views/account_move_views.xml',
         'views/employee_views.xml',
         'views/website_templates.xml',
         'report/laundry_tag_report.xml',
