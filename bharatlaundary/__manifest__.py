@@ -1,6 +1,6 @@
 {
     'name': "Bharat Laundary Core",
-    'version': '1.0',
+    'version': '1.1',
     'summary': "Core module for Bharat Laundary operations",
     'description': """
 Bharat Laundary Core Module
@@ -10,7 +10,7 @@ Handles backend logic for Bharat Laundary.
     'author': "Bharat Laundary Team",
     'website': "http://www.bharatlaundary.com",
     'category': 'Services',
-    'depends': ['base', 'product', 'website', 'website_sale', 'payment_custom', 'hr', 'sale', 'account', 'barcodes'],
+    'depends': ['base', 'product', 'website', 'website_sale', 'payment_custom', 'hr', 'sale', 'account', 'barcodes', 'crm'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

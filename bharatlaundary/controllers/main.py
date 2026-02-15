@@ -25,3 +25,36 @@ class BharatLaundaryWebsite(http.Controller):
     @http.route(['/services'], type='http', auth="public", website=True)
     def services_page(self, **kwargs):
         return request.render("bharatlaundary.services_page")
+
+    @http.route(['/bharatlaundary/schedule/submit'], type='http', auth="public", website=True, methods=['POST'], csrf=False)
+    def schedule_submit(self, **post):
+        contact_name = post.get('name')
+        mobile = post.get('mobile')
+        address = post.get('address')
+        pickup_time = post.get('pickup_datetime')
+
+        if not contact_name or not mobile:
+             return request.render("bharatlaundary.homepage", {
+                'form_error': "Name and Mobile are required.",
+                'combos': request.env['bharatlaundary.service'].search([('active', '=', True)])
+            })
+
+        description = f"Address: {address}\nPickup Time: {pickup_time}"
+        
+        # Create Lead
+        request.env['crm.lead'].sudo().create({
+            'name': f"Pickup Request from {contact_name}",
+            'contact_name': contact_name,
+            'mobile': mobile,
+            'description': description,
+            'type': 'lead',
+        })
+        
+        # Redirect to thank you page or show success message on homepage
+        return request.render("bharatlaundary.thank_you_page", {
+            'name': contact_name,
+        })
+
+    @http.route(['/thank-you'], type='http', auth="public", website=True)
+    def thank_you_page(self, **kwargs):
+         return request.render("bharatlaundary.thank_you_page")

@@ -17,7 +17,7 @@
                                     Experience the future of laundry with Bharat Laundary.
                                 </p>
                                 <div class="d-flex flex-wrap">
-                                    <a href="/shop" class="btn btn-primary btn-lg rounded-pill px-5 py-3 mr-3 mb-3 shadow d-flex align-items-center">
+                                    <a href="#" data-toggle="modal" data-target="#schedulePickupModal" class="btn btn-primary btn-lg rounded-pill px-5 py-3 mr-3 mb-3 shadow d-flex align-items-center">
                                         <i class="fa fa-calendar-check-o mr-2"></i> Schedule Pickup
                                     </a>
                                     <a href="/pricing" class="btn btn-outline-primary btn-lg rounded-pill px-5 py-3 mb-3 d-flex align-items-center">
@@ -185,10 +185,72 @@
                     </div>
                 </a>
 
+                <!-- Schedule Pickup Modal -->
+                <div class="modal fade" id="schedulePickupModal" tabindex="-1" role="dialog" aria-labelledby="schedulePickupModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content border-0 shadow-lg">
+                            <div class="modal-header bg-primary text-white border-0">
+                                <h5 class="modal-title font-weight-bold" id="schedulePickupModalLabel">Schedule Your Pickup</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                                    <span aria-hidden="true">&#215;</span>
+                                </button>
+                            </div>
+                            <form action="/bharatlaundary/schedule/submit" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="modal-body p-4">
+                                    <div class="form-group">
+                                        <label for="name" class="font-weight-bold text-muted small text-uppercase">Your Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text border-0 bg-light"><i class="fa fa-user text-primary"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control border-0 bg-light" id="name" name="name" required="required" placeholder="John Doe"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile" class="font-weight-bold text-muted small text-uppercase">Mobile Number <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text border-0 bg-light"><i class="fa fa-phone text-primary"></i></span>
+                                            </div>
+                                            <input type="tel" class="form-control border-0 bg-light" id="mobile" name="mobile" required="required" placeholder="10-digit mobile number"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address" class="font-weight-bold text-muted small text-uppercase">Pickup Address</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text border-0 bg-light"><i class="fa fa-map-marker text-primary"></i></span>
+                                            </div>
+                                            <textarea class="form-control border-0 bg-light" id="address" name="address" rows="3" placeholder="Full address including flat/house no."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pickup_datetime" class="font-weight-bold text-muted small text-uppercase">Preferred Pickup Time</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text border-0 bg-light"><i class="fa fa-clock-o text-primary"></i></span>
+                                            </div>
+                                            <input type="datetime-local" class="form-control border-0 bg-light" id="pickup_datetime" name="pickup_datetime"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer border-0 p-4">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary px-4 rounded-pill shadow-sm">Confirm Pickup</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <style>
                     .hover-shadow:hover { box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; transform: translateY(-5px); transition: all 0.3s; }
                     .scale-up { transform: scale(1.05); z-index: 1; border: none; box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; }
                     .opacity-75 { opacity: 0.75; }
+                    /* Form Styles */
+                    .form-control:focus { box-shadow: none; background-color: #fff !important; border: 1px solid var(--primary-color) !important; }
+                    .input-group-text { min-width: 45px; justify-content: center; }
                 </style>
             </div>
         </xpath>
@@ -404,4 +466,27 @@
         <field name="sequence" type="int">10</field>
     </record>
 
+    <template id="thank_you_page" name="Thank You">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="container py-5 text-center" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+                    <div class="row w-100 justify-content-center">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="card border-0 shadow-lg p-5 rounded-lg animate__animated animate__zoomIn">
+                                <div class="mb-4">
+                                    <div class="rounded-circle bg-success d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                        <i class="fa fa-check fa-4x text-white"></i>
+                                    </div>
+                                </div>
+                                <h1 class="font-weight-bold text-success mb-3">Thank You!</h1>
+                                <p class="lead text-muted mb-4">Your pickup request has been received successfully.</p>
+                                <p class="text-muted mb-5">Our team will contact you at <strong><t t-esc="name if name else ''"/></strong> shortly to confirm the slot.</p>
+                                <a href="/" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm">Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
 </odoo>
