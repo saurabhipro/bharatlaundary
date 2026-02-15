@@ -65,42 +65,59 @@ class SaleOrder(models.Model):
         return self.env.ref('bharatlaundary.action_report_laundry_tag').report_action(self)
 
     def _get_laundry_tags(self):
-        """ Returns a list of tag data for the report """
+        """ Returns a list of tag data for the report with group counters """
         self.ensure_one()
         tags = []
-        # Calculate total count of items based on piece_count with fallback logic
-        total_count = 0
-        for line in self.order_line:
-            p_qty = line.piece_count
-            if p_qty <= 0:
-                 p_qty = int(line.product_uom_qty) if line.product_uom_qty >= 1 else 1
-            total_count += p_qty
         
-        current_idx = 1
+        # Pass 1: Calculate Totals
+        grand_total = 0
+        group_totals = {} # {code: count}
+        line_data = [] # List of dicts
+
         for line in self.order_line:
-            # Use piece_count for number of tags
+            # Determine Quantity
             qty = line.piece_count
             if qty <= 0:
-                # Fallback to uom_qty if piece_count is 0 or negative (though default is 1)
-                qty = int(line.product_uom_qty) if line.product_uom_qty >= 1 else 1
+                 qty = int(line.product_uom_qty) if line.product_uom_qty >= 1 else 1
             
-            # Service abbreviation (first 2 letters) or first tag
+            # Determine Service Code (Main Category)
             if line.service_tag_ids:
-                service_code = line.service_tag_ids[0].name.upper()
+                code = line.service_tag_ids[0].name.upper()
             else:
-                service_code = line.product_id.name[:2].upper() if line.product_id.name else "LD"
+                code = line.product_id.name[:2].upper() if line.product_id.name else "LD"
+            
+            grand_total += qty
+            group_totals[code] = group_totals.get(code, 0) + qty
+            
+            line_data.append({
+                'line': line,
+                'qty': qty,
+                'code': code
+            })
+        
+        # Pass 2: Generate Tags
+        group_counters = {} # {code: current_index}
+        
+        for item in line_data:
+            line = item['line']
+            qty = item['qty']
+            code = item['code']
+            product_name = line.product_id.name
             
             for _ in range(qty):
+                # Increment counter for this specific code group
+                group_counters[code] = group_counters.get(code, 0) + 1
+                group_idx = group_counters[code]
+                group_total = group_totals[code]
+                
                 tags.append({
-                    'index': current_idx,
-                    'total': total_count,
-                    'product_name': line.product_id.name,
-                    'service_code': service_code,
-                    'customer_name': self.partner_id.name,
                     'order_name': self.name,
-                    'date': fields.Datetime.now().strftime('%m/%d/%y, %I:%M %p'),
+                    'date': fields.Datetime.now().strftime('%m/%d/%y'),
+                    'customer_name': self.partner_id.name,
+                    'product_name': product_name,       # Sub Category
+                    'service_code': code,               # Main Category
+                    'counter_str': f"{group_idx} / {group_total} / {grand_total}"
                 })
-                current_idx += 1
         return tags
 
 class HrEmployee(models.Model):
