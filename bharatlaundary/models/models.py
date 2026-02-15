@@ -112,7 +112,7 @@ class SaleOrder(models.Model):
                 
                 tags.append({
                     'order_name': self.name,
-                    'date': fields.Datetime.now().strftime('%m/%d/%y'),
+                    'date': fields.Datetime.now().strftime('%m/%d/%y %H:%M'),
                     'customer_name': self.partner_id.name,
                     'product_name': product_name,       # Sub Category
                     'service_code': code,               # Main Category
