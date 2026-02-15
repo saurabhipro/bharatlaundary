@@ -34,6 +34,12 @@ class ProductTemplate(models.Model):
                 record.ecommerce_categ_id = record.public_categ_ids[0].id
             else:
                 record.ecommerce_categ_id = False
+
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    piece_count = fields.Integer(string="Pieces", default=1, help="Number of physical items/tags to generate")
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
@@ -52,18 +58,16 @@ class SaleOrder(models.Model):
         """ Returns a list of tag data for the report """
         self.ensure_one()
         tags = []
-        # Calculate total count of items across all lines (services)
-        service_lines = self.order_line.filtered(lambda l: l.product_id.type == 'service')
-        total_count = int(sum(service_lines.mapped('product_uom_qty')))
-        
-        if total_count == 0:
-            total_count = int(sum(self.order_line.mapped('product_uom_qty')))
+        # Calculate total count of items based on piece_count
+        total_count = sum(self.order_line.mapped('piece_count'))
         
         current_idx = 1
         for line in self.order_line:
-            qty = int(line.product_uom_qty)
+            # Use piece_count for number of tags
+            qty = line.piece_count
             if qty <= 0:
-                continue
+                # Fallback to uom_qty if piece_count is 0 or negative (though default is 1)
+                qty = int(line.product_uom_qty) if line.product_uom_qty >= 1 else 1
             
             # Service abbreviation (first 2 letters)
             service_code = line.product_id.name[:2].upper() if line.product_id.name else "LD"
