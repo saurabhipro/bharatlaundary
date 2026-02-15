@@ -58,8 +58,13 @@ class SaleOrder(models.Model):
         """ Returns a list of tag data for the report """
         self.ensure_one()
         tags = []
-        # Calculate total count of items based on piece_count
-        total_count = sum(self.order_line.mapped('piece_count'))
+        # Calculate total count of items based on piece_count with fallback logic
+        total_count = 0
+        for line in self.order_line:
+            p_qty = line.piece_count
+            if p_qty <= 0:
+                 p_qty = int(line.product_uom_qty) if line.product_uom_qty >= 1 else 1
+            total_count += p_qty
         
         current_idx = 1
         for line in self.order_line:
