@@ -16,11 +16,13 @@
             </xpath>
 
             <!-- Add Piece Count and UOM to Order Lines -->
-            <xpath expr="//field[@name='order_line']//field[@name='product_uom_qty']" position="after">
-                <field name="product_uom" string="UOM" optional="show"/>
-                <field name="piece_count" string="Pieces" sum="Total Pieces" optional="show"/>
+            <!-- Add Piece Count and UOM to Order Lines -->
+            <!-- Using 'list' tag instead of 'tree' for Odoo 18 compatibility -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
+                <field name="piece_count" string="Pieces" sum="Total Pieces"/>
             </xpath>
-            <xpath expr="//field[@name='order_line']//field[@name='product_uom_qty']" position="attributes">
+            
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="attributes">
                  <attribute name="string">Weight/Qty</attribute>
             </xpath>
         </field>
