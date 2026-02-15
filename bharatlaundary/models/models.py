@@ -39,13 +39,10 @@ class SaleOrder(models.Model):
 
     laundry_state = fields.Selection([
         ('draft', 'Quotation'),
-        ('pickup_assigned', 'Pickup Assigned'),
         ('picked', 'Picked Up'),
         ('processing', 'Processing'),
-        ('washing', 'Washing'),
         ('ready', 'Ready'),
         ('delivered', 'Delivered'),
-        ('invoice_pending', 'Invoice Pending'),
         ('invoiced', 'Invoiced'),
     ], string="Laundry Status", default='draft', tracking=True)
 
