@@ -54,6 +54,10 @@ class SaleOrder(models.Model):
 
     rider_id = fields.Many2one('hr.employee', string="Pickup/Delivery Rider", domain=[('laundry_role', '=', 'rider')])
 
+    def action_print_laundry_tags(self):
+        """ Button action to print laundry tags """
+        return self.env.ref('bharatlaundary.action_report_laundry_tag').report_action(self)
+
     def _get_laundry_tags(self):
         """ Returns a list of tag data for the report """
         self.ensure_one()
