@@ -17,7 +17,7 @@
                                     Experience the future of laundry with Bharat Laundary.
                                 </p>
                                 <div class="d-flex flex-wrap">
-                                    <a href="#" data-toggle="modal" data-target="#schedulePickupModal" class="btn btn-primary btn-lg rounded-pill px-5 py-3 mr-3 mb-3 shadow d-flex align-items-center">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#schedulePickupModal" class="btn btn-primary btn-lg rounded-pill px-5 py-3 mr-3 mb-3 shadow d-flex align-items-center">
                                         <i class="fa fa-calendar-check-o mr-2"></i> Schedule Pickup
                                     </a>
                                     <a href="/pricing" class="btn btn-outline-primary btn-lg rounded-pill px-5 py-3 mb-3 d-flex align-items-center">
@@ -191,7 +191,7 @@
                         <div class="modal-content border-0 shadow-lg">
                             <div class="modal-header bg-primary text-white border-0">
                                 <h5 class="modal-title font-weight-bold" id="schedulePickupModalLabel">Schedule Your Pickup</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                                <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close" style="opacity: 1;">
                                     <span aria-hidden="true">&#215;</span>
                                 </button>
                             </div>
@@ -236,7 +236,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer border-0 p-4">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary px-4 rounded-pill shadow-sm">Confirm Pickup</button>
                                 </div>
                             </form>
