@@ -28,16 +28,8 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='job_id']" position="after">
+            <xpath expr="//field[@name='name']" position="after">
                 <field name="laundry_role"/>
-            </xpath>
-            <xpath expr="//div[hasclass('oe_kanban_details')]//ul" position="inside">
-                <li t-if="record.laundry_role.raw_value" class="mt-1">
-                    <span class="badge rounded-pill text-bg-info">
-                        <i class="fa fa-tag me-1"/>
-                        <field name="laundry_role"/>
-                    </span>
-                </li>
             </xpath>
         </field>
     </record>

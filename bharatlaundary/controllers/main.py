@@ -21,3 +21,7 @@ class BharatLaundaryWebsite(http.Controller):
         return request.render("bharatlaundary.rate_list_page", {
             'categories': categories,
         })
+
+    @http.route(['/services'], type='http', auth="public", website=True)
+    def services_page(self, **kwargs):
+        return request.render("bharatlaundary.services_page")
