@@ -8,10 +8,10 @@
         <field name="page_height">80</field>
         <field name="page_width">80</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">2</field>
-        <field name="margin_bottom">2</field>
-        <field name="margin_left">2</field>
-        <field name="margin_right">2</field>
+        <field name="margin_top">1</field>
+        <field name="margin_bottom">1</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">1</field>
         <field name="header_line" eval="False"/>
         <field name="header_spacing">0</field>
         <field name="dpi">90</field>
@@ -35,7 +35,7 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-foreach="doc._get_laundry_tags()" t-as="tag">
-                    <div class="page" t-att-style="'width: 80mm; height: 80mm; padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif; text-align: center; border: 3px solid #000; display: flex; flex-direction: column; position: relative; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
+                    <div class="page" t-att-style="'width: 100%; height: 99%; padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif; text-align: center; border: 3px solid #000; display: flex; flex-direction: column; position: relative; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
                         
                         <!-- Header Row: Date & Brand (Stacked & Centered) -->
                         <div style="height: 12%; border-bottom: 2px solid #000; display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: 1.2;">
