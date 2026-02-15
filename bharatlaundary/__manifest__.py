@@ -10,7 +10,7 @@ Handles backend logic for Bharat Laundary.
     'author': "Bharat Laundary Team",
     'website': "http://www.bharatlaundary.com",
     'category': 'Services',
-    'depends': ['base', 'product', 'website', 'website_sale', 'payment_custom', 'hr', 'sale', 'account', 'barcodes', 'crm'],
+    'depends': ['base', 'product', 'website', 'website_sale', 'payment_custom', 'hr', 'sale', 'account', 'barcodes', 'crm', 'sale_crm'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
@@ -23,6 +23,7 @@ Handles backend logic for Bharat Laundary.
         'data/data.xml',
         'data/products.xml',
         'data/combos.xml',
+        'data/order.xml',
     ],
     'assets': {
         'web.assets_frontend': [
