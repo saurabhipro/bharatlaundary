@@ -38,7 +38,7 @@
                     <div class="page" t-att-style="'width: 38mm; height: 53mm; padding: 1mm 0; margin: 0 auto; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2mm; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
                         
                         <!-- Header: Date & Brand -->
-                        <div style="line-height: 1;">
+                        <div style="line-height: 2;">
                             <div style="font-size: 5pt; font-weight: bold;"><t t-esc="tag['date']"/></div>
                             <div style="font-size: 6pt; font-weight: 900; text-transform: uppercase;">Bharat Laundary</div>
                         </div>  
@@ -55,12 +55,12 @@
                         </div>
 
                         <!-- Product Name -->
-                        <div style="font-size: 9pt; font-weight: bold; line-height: 1; padding: 0 1mm;">
+                        <div style="font-size: 9pt; font-weight: bold; line-height: 2; padding: 0 1mm;">
                             <t t-esc="tag['product_name']"/>
                         </div>
 
                         <!-- Footer: Counter & URL -->
-                        <div style="width: 100%; line-height: 1;">
+                        <div style="width: 100%; line-height: 2;">
                              <div style="font-size: 12pt; font-weight: 900; margin-bottom: 0.5px;"><t t-esc="tag['counter_str']"/></div>
                              <div style="font-size: 4pt; color: #666; text-transform: lowercase;">bharatlaundary.com</div>
                         </div>
