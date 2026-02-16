@@ -35,27 +35,27 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-foreach="doc._get_laundry_tags()" t-as="tag">
-                    <div class="page" t-att-style="'width: 38mm; height: 78mm; padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif; text-align: center; border: 3px solid #000; display: flex; flex-direction: column; position: relative; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
+                    <div class="page" t-att-style="'width: 38mm; height: 78mm; padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; position: relative; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
                         
                         <!-- Header Row: Date & Brand (Stacked & Centered) -->
-                        <div style="height: 12%; border-bottom: 2px solid #000; display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: 1.2;">
+                        <div style="height: 12%; display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: 1.2;">
                             <div style="font-weight: bold; font-size: 6pt;"><t t-esc="tag['date']"/></div>
                             <div style="font-weight: bold; font-size: 6pt;">BHARAT LAUNDARY</div>
                         </div>
 
                         <!-- Order & Customer -->
-                        <div style="height: 20%; border-bottom: 2px solid #000; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div style="height: 20%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div style="font-size: 15pt; font-weight: 900; line-height: 1;"><t t-esc="tag['order_name']"/></div>
                             <div style="font-size: 6pt; font-weight: bold; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 95%; margin-top: 2px;"><t t-esc="tag['customer_name']"/></div>
                         </div>
 
                         <!-- Main Code (DC/PL) -->
-                        <div style="height: 28%; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
+                        <div style="height: 28%; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
                             <div style="font-size: 24pt; font-weight: 900; line-height: 1;"><t t-esc="tag['service_code']"/></div>
                         </div>
 
                         <!-- Product Name -->
-                        <div style="height: 20%; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: center; padding: 0 5px;">
+                        <div style="height: 20%; display: flex; align-items: center; justify-content: center; padding: 0 5px;">
                             <div style="font-size: 10pt; font-weight: bold; line-height: 1.1; text-align: center;"><t t-esc="tag['product_name']"/></div>
                         </div>
 
