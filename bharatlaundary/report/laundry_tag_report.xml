@@ -5,7 +5,7 @@
         <field name="name">Laundry Tag (Small)</field>
         <field name="default" eval="True"/>
         <field name="format">custom</field>
-        <field name="page_height">42</field>
+        <field name="page_height">52</field>
         <field name="page_width">40</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">1</field>
@@ -35,7 +35,7 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-foreach="doc._get_laundry_tags()" t-as="tag">
-                    <div class="page" t-att-style="'width: 38mm; height: 40mm; padding: 1mm 0; margin: 0 auto; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
+                    <div class="page" t-att-style="'width: 38mm; height: 50mm; padding: 1mm 0; margin: 0 auto; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3mm; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
                         
                         <!-- Header: Date & Brand -->
                         <div style="line-height: 1;">
