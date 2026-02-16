@@ -38,13 +38,13 @@
                     <div class="page" t-att-style="'width: 38mm; height: 53mm; padding: 1mm 0; margin: 0 auto; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2mm; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
                         
                         <!-- Header: Date & Brand -->
-                        <div style="line-height: 5;">
+                        <div style="line-height: 1;">
                             <div style="font-size: 5pt; font-weight: bold;"><t t-esc="tag['date']"/></div>
                             <div style="font-size: 6pt; font-weight: 900; text-transform: uppercase;">Bharat Laundary</div>
-                        </div>
+                        </div>  
 
                         <!-- Order Info -->
-                        <div style="line-height: 1;">
+                        <div style="line-height: 2;">
                             <div style="font-size: 14pt; font-weight: 900;"><t t-esc="tag['order_name']"/></div>
                             <div style="font-size: 7pt; font-weight: bold; margin-top: 1px; max-width: 36mm; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><t t-esc="tag['customer_name']"/></div>
                         </div>
