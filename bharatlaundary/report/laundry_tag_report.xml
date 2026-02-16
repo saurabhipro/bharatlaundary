@@ -5,7 +5,7 @@
         <field name="name">Laundry Tag (Small)</field>
         <field name="default" eval="True"/>
         <field name="format">custom</field>
-        <field name="page_height">80</field>
+        <field name="page_height">60</field>
         <field name="page_width">40</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">1</field>
@@ -35,34 +35,34 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-foreach="doc._get_laundry_tags()" t-as="tag">
-                    <div class="page" t-att-style="'width: 38mm; height: 78mm; padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; position: relative; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
+                    <div class="page" t-att-style="'width: 38mm; height: 58mm; padding: 2mm 0; margin: 0 auto; box-sizing: border-box; font-family: sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: space-between; overflow: hidden; background: white;' + ('page-break-after: always;' if not tag_last else '')">
                         
-                        <!-- Header Row: Date & Brand (Stacked & Centered) -->
-                        <div style="height: 12%; display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: 1.2;">
-                            <div style="font-weight: bold; font-size: 6pt;"><t t-esc="tag['date']"/></div>
-                            <div style="font-weight: bold; font-size: 6pt;">BHARAT LAUNDARY</div>
+                        <!-- Header: Date & Brand -->
+                        <div style="line-height: 1.1;">
+                            <div style="font-size: 6pt; font-weight: bold;"><t t-esc="tag['date']"/></div>
+                            <div style="font-size: 7pt; font-weight: 900; text-transform: uppercase;">Bharat Laundary</div>
                         </div>
 
-                        <!-- Order & Customer -->
-                        <div style="height: 20%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div style="font-size: 15pt; font-weight: 900; line-height: 1;"><t t-esc="tag['order_name']"/></div>
-                            <div style="font-size: 6pt; font-weight: bold; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 95%; margin-top: 2px;"><t t-esc="tag['customer_name']"/></div>
+                        <!-- Order Info -->
+                        <div style="line-height: 1;">
+                            <div style="font-size: 16pt; font-weight: 900;"><t t-esc="tag['order_name']"/></div>
+                            <div style="font-size: 7pt; font-weight: bold; margin-top: 1px; max-width: 36mm; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><t t-esc="tag['customer_name']"/></div>
                         </div>
 
-                        <!-- Main Code (DC/PL) -->
-                        <div style="height: 28%; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
-                            <div style="font-size: 24pt; font-weight: 900; line-height: 1;"><t t-esc="tag['service_code']"/></div>
+                        <!-- Service Code Box -->
+                        <div style="width: 100%; background-color: #f2f2f2; padding: 3mm 0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                            <div style="font-size: 26pt; font-weight: 900; line-height: 1; color: #000;"><t t-esc="tag['service_code']"/></div>
                         </div>
 
                         <!-- Product Name -->
-                        <div style="height: 20%; display: flex; align-items: center; justify-content: center; padding: 0 5px;">
-                            <div style="font-size: 10pt; font-weight: bold; line-height: 1.1; text-align: center;"><t t-esc="tag['product_name']"/></div>
+                        <div style="font-size: 10pt; font-weight: bold; line-height: 1.1; padding: 0 1mm;">
+                            <t t-esc="tag['product_name']"/>
                         </div>
 
-                        <!-- Footer: Counter -->
-                        <div style="height: 20%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;">
-                             <div style="font-size: 14pt; font-weight: 900;"><t t-esc="tag['counter_str']"/></div>
-                             <div style="position: absolute; bottom: 2px; font-size: 4pt; color: #666;">bharatlaundary.com</div>
+                        <!-- Footer: Counter & URL -->
+                        <div style="width: 100%; line-height: 1;">
+                             <div style="font-size: 14pt; font-weight: 900; margin-bottom: 2px;"><t t-esc="tag['counter_str']"/></div>
+                             <div style="font-size: 4pt; color: #666; text-transform: lowercase;">bharatlaundary.com</div>
                         </div>
 
                     </div>
