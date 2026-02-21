@@ -8,7 +8,7 @@ class ResConfigSettings(models.TransientModel):
     otp_client_id = fields.Char(string='OTP Client ID', config_parameter='bharatlaundary.otp_client_id')
     otp_sender_id = fields.Char(string='OTP Sender ID', config_parameter='bharatlaundary.otp_sender_id')
     dlt_template_id = fields.Char(string='DLT Template ID', config_parameter='bharatlaundary.dlt_template_id')
-    otp_message_template = fields.Text(string='OTP Message Template', config_parameter='bharatlaundary.otp_message_template')
+    otp_message_template = fields.Char(string='OTP Message Template', config_parameter='bharatlaundary.otp_message_template')
     android_app_hash = fields.Char(string='Android App Hash', config_parameter='bharatlaundary.android_app_hash')
     test_mobile_number = fields.Char(string='Test Mobile Number', config_parameter='bharatlaundary.test_mobile_number')
 
