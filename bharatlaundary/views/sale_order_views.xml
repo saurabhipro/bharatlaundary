@@ -36,6 +36,10 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_mobile" optional="show"/>
+                <field name="rider_id" optional="show"/>
+            </xpath>
             <field name="state" position="after">
                 <field name="laundry_state" widget="badge" 
                     decoration-info="laundry_state == 'picked'"

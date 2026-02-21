@@ -59,6 +59,7 @@ class SaleOrder(models.Model):
     ], string="Laundry Status", default='draft', tracking=True)
 
     rider_id = fields.Many2one('hr.employee', string="Pickup/Delivery Rider", domain=[('laundry_role', '=', 'rider')])
+    partner_mobile = fields.Char(related='partner_id.mobile', string="Mobile", readonly=True)
 
     def action_print_laundry_tags(self):
         """ Button action to print laundry tags """
