@@ -59,7 +59,12 @@ class SaleOrder(models.Model):
     ], string="Laundry Status", default='draft', tracking=True)
 
     rider_id = fields.Many2one('hr.employee', string="Pickup/Delivery Rider", domain=[('laundry_role', '=', 'rider')])
-    partner_mobile = fields.Char(related='partner_id.mobile', string="Mobile", readonly=True)
+    partner_mobile = fields.Char(compute='_compute_partner_mobile', string="Customer Contact", store=True)
+
+    @api.depends('partner_id.mobile', 'partner_id.phone')
+    def _compute_partner_mobile(self):
+        for record in self:
+            record.partner_mobile = record.partner_id.mobile or record.partner_id.phone or ''
 
     def action_print_laundry_tags(self):
         """ Button action to print laundry tags """

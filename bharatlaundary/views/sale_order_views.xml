@@ -37,7 +37,25 @@
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="partner_mobile" optional="show"/>
+                <field name="partner_mobile" string="Mobile/Phone" optional="show"/>
+                <field name="rider_id" optional="show"/>
+            </xpath>
+            <field name="state" position="after">
+                <field name="laundry_state" widget="badge" 
+                    decoration-info="laundry_state == 'picked'"
+                    decoration-warning="laundry_state == 'processing'"
+                    decoration-success="laundry_state in ('ready', 'delivered', 'invoiced')"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_order_tree_inherit_laundry" model="ir.ui.view">
+        <field name="name">sale.order.order.list.laundry</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_mobile" string="Mobile/Phone" optional="show"/>
                 <field name="rider_id" optional="show"/>
             </xpath>
             <field name="state" position="after">
